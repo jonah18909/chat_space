@@ -40,8 +40,8 @@
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
-|text|text|
-|image|text|
+|text|string|
+|image|string|
 
 ### Association
 - belongs_to :user
