@@ -1,0 +1,55 @@
+.notification
+  .notice
+.chat-side
+  .chat-side__user
+    .chat-side__user-content
+      .chat-side__user-name seo
+      %a{href: '/groups/new', class: "chat-side__user--new--group"}
+        %i.fa.fa-pencil-square-o
+          ::before
+      %a{href: '/users/edit', class: "chat-side__user--edit-user"}
+        %i.fa.fa-fa-cog
+          ::before
+  .chat-side__groups
+    .chat-side__groupes-list
+      %a{href: ''}
+        .chat-side__group
+          .chat-side__group-name
+            sample
+          .chat-side__group-message
+            = @messages
+.chat-main
+  .chat-main__header
+    .chat-main__header--group.clearfix
+      .chat-main__header--group-name
+        sample
+      %a{href: '', class: "chat-main__header--group-edit-btn"}
+        edit
+        ::after
+      .chat-main__header-members
+      "MEMBER:"
+      %i
+      James
+  .chat-main__body
+    .chat-main__body--messages-list
+      .chat-main__message.clearfix{data: {id: '1'}}
+        .chat-main__message-name
+        James
+        .chat-main__message-time
+        2017/12/27 14:38:57
+        .chat-main__message-body
+        = @messages
+        ::after
+      .chat-main__message.clearfix{data: {id: '2'}}
+        .chat-main__message-name
+        James
+        .chat-main__message-time
+        2017/12/27 14:38:57
+        .chat-main__message-body
+        @messages
+        ::after
+    .chat-main__footer
+      %form{id: "new_message", class: "chat-main__footer-form", enctype: 'multipart/form-data', action: '/groups/1/messages', 'accept-charset': 'UTF-8', method: :post }
+
+
+
