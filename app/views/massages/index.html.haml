@@ -23,7 +23,7 @@
     .chat-main__header--group.clearfix
       .chat-main__header--group-name
         sample
-      %a{href: '', class: "chat-main__header--group-edit-btn"}
+      %a.chat-main__header--group-edit-btn{href: ''}
         edit
         ::after
       .chat-main__header-members
@@ -48,8 +48,9 @@
         .chat-main__message-body
         @messages
         ::after
-    .chat-main__footer
-      %form{id: "new_message", class: "chat-main__footer-form", enctype: 'multipart/form-data', action: '/groups/1/messages', 'accept-charset': 'UTF-8', method: :post }
+  .chat-main__footer
+    %form#new_message.chat-main__footer-form{ enctype: 'multipart/form-data', action: '/groups/1/messages', accept-charset="UTF-8", method: :post }
+      %input
 
 
 
