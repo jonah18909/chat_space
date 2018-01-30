@@ -1,3 +1,76 @@
-// Place all the styles related to the massages controller here.
+// Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@font-face {
+    font-family: 'ほのか明朝';
+    src: url('font_1_honokamin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+head {
+    display: none;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  display: block;
+  background-color: #f0f0f0;
+  font-size: 14px;
+  color: #333;
+  margin: 0 auto;
+}
+
+
+.chat-side {
+  height: 100vh;
+  width: 300px;
+  float: left;
+  .chat-side__user {
+    height: 15%;
+    width: 100%;
+    background-color: #253141;
+    position: relative;
+  }
+  .chat-side__groups {
+    height: 85%;
+    width: 100%;
+    background-color: #2f3e51;
+    .chat-side__groups-list {
+      height: 100%;
+      color: #fff;
+      }
+    }
+}
+
+
+.chat-main {
+  height: 100vh;
+  width: calc( 100vw - 300px );
+  float: left;
+  .chat-main__header {
+    height: 15%;
+    border: 1px solid #eee;
+  }
+  .chat-main__footer {
+    height: 90px;
+    width: 100%;
+    background-color: #B8C3C7;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: block;
+}
