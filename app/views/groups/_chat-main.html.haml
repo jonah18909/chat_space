@@ -1,0 +1,38 @@
+.chat-main
+  .chat-main__header
+    .chat-main__header--group.clearfix
+      .chat-main__header--group-name
+        sample
+      %a.chat-main__header--group-edit-btn{href: '/groups/#{id}/edit'}
+        edit
+    .chat-main__header-members
+      MEMBER:
+      %i
+        James
+  .chat-main__body
+    .chat-main__body--messages-list
+      .chat-main__message.clearfix{data: {id: '1'}}
+        .chat-main__message-name
+          James
+        .chat-main__message-time
+          2017/12/27 14:38:57
+        .chat-main__message-body
+          = @messages
+      .chat-main__message.clearfix{data: {id: '2'}}
+        .chat-main__message-name
+          James
+        .chat-main__message-time
+          2017/12/27 14:38:56
+        .chat-main__message-body
+          = @messages
+
+.chat-main__footer
+    %form#new_message.chat-main__footer-form{"accept-charset" => "UTF-8", :action => "/groups/362/messages", :enctype => "multipart/form-data", :method => "post"}
+      %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+      %input{:name => "authenticity_token", :type => "hidden", :value => "irkWRuBh5bdyIkyYvQXQwoYxYRiTpVl4Yu2XO8z8MlRjoPlGf+fZNjx8/2kwqAGRg5gvEsffTYp1m8EjU82aIg=="}/
+      .chat-main__footer-body
+        %input#message_body.message{:name => "message[body]", :placeholder => "type a message", :type => "text"}/
+        %label.chat-file{:for => "message_image"}
+          %input#message_image.image{:name => "message[image]", :type => "file"}/
+          %i.fa.fa-image
+      %input.submit{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
