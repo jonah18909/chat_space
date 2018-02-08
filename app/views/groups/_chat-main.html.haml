@@ -3,7 +3,7 @@
     .chat-main__header--group.clearfix
       .chat-main__header--group-name
         sample
-      %a.chat-main__header--group-edit-btn{href: '/groups/#{id}/edit'}
+      %a.chat-main__header--group-edit-btn{href: '/groups/#{@group.id}/edit'}
         edit
     .chat-main__header-members
       MEMBER:
@@ -26,7 +26,7 @@
         .chat-main__message-body
           = @messages
 
-.chat-main__footer
+  .chat-main__footer
     %form#new_message.chat-main__footer-form{"accept-charset" => "UTF-8", :action => "/groups/362/messages", :enctype => "multipart/form-data", :method => "post"}
       %input{:name => "utf8", :type => "hidden", :value => "✓"}/
       %input{:name => "authenticity_token", :type => "hidden", :value => "irkWRuBh5bdyIkyYvQXQwoYxYRiTpVl4Yu2XO8z8MlRjoPlGf+fZNjx8/2kwqAGRg5gvEsffTYp1m8EjU82aIg=="}/
