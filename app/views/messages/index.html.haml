@@ -3,4 +3,9 @@
 
 = render 'groups/chat-side'
 
-= render 'groups/chat-main'
+.chat-main
+  = render 'groups/chat-main'
+  .chat-main__body
+    = render partial: 'message', collection: @messages
+  .chat-main__footer
+    = render 'messages/footer'

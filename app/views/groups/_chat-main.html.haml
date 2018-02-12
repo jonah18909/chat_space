@@ -1,41 +1,17 @@
-.chat-main
-  .chat-main__header
-    .chat-main__header--group.clearfix
-      .chat-main__header--group-name
-        sample
-      %ul
-        %li.chat-main__header--group-edit-btn
-          = link_to 'edit', "/groups/#{@group.id}/edit", method: :get
-    .chat-main__header-members
-      MEMBER:
-      %i
-        James
-  .chat-main__body
-    .chat-main__body--messages-list
-      .chat-main__message.clearfix{data: {id: '1'}}
-        .chat-main__message-name
-          James
-        .chat-main__message-time
-          2017/12/27 14:38:57
-        .chat-main__message-body
-          = @messages
-      .chat-main__message.clearfix{data: {id: '2'}}
-        .chat-main__message-name
-          James
-        .chat-main__message-time
-          2017/12/27 14:38:56
-        .chat-main__message-body
-          = @messages
+.chat-main__header
+  .chat-main__header--group.clearfix
+    .chat-main__header--group-name
+      sample
+    %ul
+      %li.chat-main__header--group-edit-btn
+        = link_to 'edit', "/groups/#{@group.id}/edit", method: :get
+  .chat-main__header-members
+    MEMBER:
+    %i
+      = @group.users.name
 
-  .chat-main__footer
-    .chat-main__footer-form
-      = form_for [@group, @message] do |f|
-        .chat-main__footer-body
-          = f.text_field :text, class: 'message', placeholder: 'type a message'
-          = f. label :image, class: 'chat-file' do
-            = fa_icon 'picture-o', class: 'icon'
-            = f.file_field :image, class: 'image'
-        = f.submit 'Send', class: 'submit'
+
+
 
     / %form#new_message.chat-main__footer-form{"accept-charset" => "UTF-8", :action => "/groups/362/messages", :enctype => "multipart/form-data", :method => "post"}
     /   %input{:name => "utf8", :type => "hidden", :value => "✓"}/

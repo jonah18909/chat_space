@@ -1,0 +1,8 @@
+.chat-main__footer-form
+  = form_for [@group, @message] do |f|
+    .chat-main__footer-body
+      = f.text_field :text, class: 'message', placeholder: 'type a message'
+      = f. label :image, class: 'chat-file' do
+        = fa_icon 'picture-o', class: 'icon'
+        = f.file_field :image, class: 'image'
+    = f.submit 'Send', class: 'submit'
