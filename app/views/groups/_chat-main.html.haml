@@ -28,12 +28,21 @@
           = @messages
 
   .chat-main__footer
-    %form#new_message.chat-main__footer-form{"accept-charset" => "UTF-8", :action => "/groups/362/messages", :enctype => "multipart/form-data", :method => "post"}
-      %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-      %input{:name => "authenticity_token", :type => "hidden", :value => "irkWRuBh5bdyIkyYvQXQwoYxYRiTpVl4Yu2XO8z8MlRjoPlGf+fZNjx8/2kwqAGRg5gvEsffTYp1m8EjU82aIg=="}/
-      .chat-main__footer-body
-        %input#message_body.message{:name => "message[body]", :placeholder => "type a message", :type => "text"}/
-        %label.chat-file{:for => "message_image"}
-          %input#message_image.image{:name => "message[image]", :type => "file"}/
-          %i.fa.fa-image
-      %input.submit{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
+    .chat-main__footer-form
+      = form_for [@group, @message] do |f|
+        .chat-main__footer-body
+          = f.text_field :text, class: 'message', placeholder: 'type a message'
+          = f. label :image, class: 'chat-file' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'image'
+        = f.submit 'Send', class: 'submit'
+
+    / %form#new_message.chat-main__footer-form{"accept-charset" => "UTF-8", :action => "/groups/362/messages", :enctype => "multipart/form-data", :method => "post"}
+    /   %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+    /   %input{:name => "authenticity_token", :type => "hidden", :value => "irkWRuBh5bdyIkyYvQXQwoYxYRiTpVl4Yu2XO8z8MlRjoPlGf+fZNjx8/2kwqAGRg5gvEsffTYp1m8EjU82aIg=="}/
+    /   .chat-main__footer-body
+    /     %input#message_body.message{:name => "message[body]", :placeholder => "type a message", :type => "text"}/
+    /     %label.chat-file{:for => "message_image"}
+    /       %input#message_image.image{:name => "message[image]", :type => "file"}/
+    /       %i.fa.fa-image
+    /   %input.submit{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
