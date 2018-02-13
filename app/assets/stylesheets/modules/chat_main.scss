@@ -18,12 +18,14 @@
 }
 
 .chat-main__header--group-edit-btn{
-  color: #38AEF0;
   font-size: 15px;
   padding: 12.5px 20px;
   margin: 28px 20px 0;
   border: 1px solid #38AEF0;
   float: right;
+  & a {
+    color: #38AEF0;
+  }
 }
 
 .chat-main__header-members{
