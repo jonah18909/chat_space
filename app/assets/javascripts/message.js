@@ -21,28 +21,31 @@ $(function(){
     return html;
   }
 
-  $('#new_message').on('submit', function(e){
-    e.preventDefault();
-    console.log(this)
-    var formData = new FormData(this);
-    var url = $(this).attr('action')
-    $.ajax({
-      url: url,
-      type: "POST",
-      data: formData,
-      dataType: 'json',
-      processData: false,
-      contentType: false
-    })
-    .done(function(data){
-      var html = buildHTML(data);
-      console.log('成功')
-      $('.chat-main__body--messages-list').append(html);
-      $('#message_text').val('');
-      $('.chat-main__body').animate({scrollTop:$('document').height }, 1500);
-    })
-    .fail(function(){
-      alert('error');
+  $(document).on('turbolinks:load', function(){
+    $('#new_message').on('submit', function(e){
+      e.preventDefault();
+      var formData = new FormData(this);
+      var url = $(this).attr('action')
+
+      $.ajax({
+        url: url,
+        type: "POST",
+        data: formData,
+        dataType: 'json',
+        processData: false,
+        contentType: false
+      })
+
+      .done(function(data){
+        var html = buildHTML(data);
+        console.log('成功')
+        $('.chat-main__body--messages-list').append(html);
+        $('#message_text').val('');
+        $('.chat-main__body').animate({scrollTop:$(document).height }, 1500);
+      })
+      .fail(function(){
+        alert('error');
+      });
     });
   });
 });
