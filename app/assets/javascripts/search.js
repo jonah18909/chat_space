@@ -40,28 +40,29 @@ function appendAddUser(user) {
       .done(function(users) {
         $("#user-search-result").empty();
         if (users.length !== 0 ) {
-          users.forEach(function(user, index, users){
+          users.forEach(function(user){
             appendUser(user);
-            $("#user-search-result").append('<div></div>').attr()
           })
         }
         else {
           appendNoUser("該当するユーザーはいません");
         }
-        $(document).on("click", ".user-search-add.chat-group-user__btn.chat-group-user__btn--add", function(){
+        $(document).on("click", "data-user-id", function(){
           $('#chat-group-users').empty();
           $("#user-search-field").val('');
           var userId = $(".user-search-add").data('userId');
           var userName = $(".user-search-add").data('userName');
 
-          var str = [];
-          var ary = $('[data-user-name]');
-          for(var n=0, len=ary.length;n<len;n++){
-            str.push(ary[n].getAttribute('data-user-name'));
-          }
-          console.log(str);
-          console.log(str[0]);
-            appendAddUser(str[0]);
+          var userIds = []
+            userIds.push(userId)
+          // var str = [];
+          // var ary = $('[data-user-name]');
+          // for(var n=0, len=ary.length;n<len;n++){
+          //   str.push(ary[n].getAttribute('data-user-name'));
+          // }
+          // console.log(str);
+          // console.log(userName);
+            appendAddUser(userName);
         })
         $(document).on("click", ".user-search-remove", function(){
           $(".chat-group-user").remove("#chat-group-user-8");

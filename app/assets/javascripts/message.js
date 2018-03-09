@@ -2,9 +2,9 @@ $(function(){
   function buildHTML(message){
     var chatImage = "";
     if (message.image){
-      chatImage = `<img class='chat-main__message-image', src='${message.image}'> `}
+      chatImage = `<img class='chat-main__message-image', src='${message.image}'> `;}
     var html = `
-                  <div class="chat-main__message clearfix">
+                  <div class="chat-main__message clearfix" data-id=${message.id}>
                     <div class="chat-main__message-name">
                     ${message.name}
                     </div>
@@ -21,7 +21,7 @@ $(function(){
     return html;
   }
 
-  $(document).on('turbolinks:load', function(){
+
     $('#new_message').on('submit', function(e){
       e.preventDefault();
       var formData = new FormData(this);
@@ -38,14 +38,13 @@ $(function(){
 
       .done(function(data){
         var html = buildHTML(data);
-        console.log('成功')
         $('.chat-main__body--messages-list').append(html);
         $('#message_text').val('');
-        $('.chat-main__body').animate({scrollTop:$(document).height }, 1500);
+        $('.chat-main__body').animate({scrollTop: $('.chat-main__message:last')[0].scrollheight }, 1500);
+                console.log('成功')
       })
       .fail(function(){
         alert('error');
       });
     });
-  });
 });

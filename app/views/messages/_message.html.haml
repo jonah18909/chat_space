@@ -1,5 +1,5 @@
 .chat-main__body--messages-list
-  .chat-main__message.clearfix
+  .chat-main__message.clearfix{"data-message-id": "#{message.id}"}
     .chat-main__message-name
       = message.user.name
     .chat-main__message-time
@@ -9,3 +9,4 @@
         %p.chat-main__message-text
           = message.text
       = image_tag message.image.url if message.image.present?
+
