@@ -26,7 +26,8 @@ $(function(){
   var interval = setInterval(function() {
     if (window.location.href.match(/\/groups\/\d+\/messages/)) {
     $.ajax({
-      url: location.href.json,
+      type: "get",
+      url: window.location.href,
       dataType: 'json',
     })
 
@@ -38,7 +39,7 @@ $(function(){
           insertHTML += buildHTML(message);
         }
       });
-      $('.chat-main__body--messages-list').html(insertHTML);
+      $('.chat-main__body--messages-list:last').html(insertHTML);
       console.log('自動更新')
     })
 
@@ -49,4 +50,6 @@ $(function(){
   } else {
     clearInterval(interval);
     }}, 5000 );
+
+
 });

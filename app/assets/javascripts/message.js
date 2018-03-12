@@ -22,7 +22,7 @@ $(function(){
   }
 
 
-    $('#new_message').on('submit', function(e){
+    $('.new_message').on('submit', function(e){
       e.preventDefault();
       var formData = new FormData(this);
       var url = $(this).attr('action')
@@ -38,9 +38,10 @@ $(function(){
 
       .done(function(data){
         var html = buildHTML(data);
-        $('.chat-main__body--messages-list').append(html);
+        $('.chat-main__body--messages-list:last').append(html);
         $('#message_text').val('');
-        $('.chat-main__body').animate({scrollTop: $('.chat-main__message:last')[0].scrollheight }, 1500);
+        $('#message_image').val('');
+        $('.chat-main__body').animate({scrollTop: $('.chat-main__message:last').offset().top }, 1500);
                 console.log('成功')
       })
       .fail(function(){
