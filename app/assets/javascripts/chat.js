@@ -43,7 +43,7 @@ $(function(){
       console.log('自動更新')
     })
 
-    .fail(function(data) {
+    .fail(function(json) {
       alert('自動更新に失敗しました');
     });
 
