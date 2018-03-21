@@ -93,4 +93,5 @@ $(document).on('click', '#delete-user-button', function(){
        alert('ユーザーの検索に失敗しました');
       });
   };
+  return false
 });

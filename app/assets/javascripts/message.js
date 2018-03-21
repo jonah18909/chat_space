@@ -1,3 +1,4 @@
+$(document).on('turbolinks:load', function(){
 $(function(){
   function buildHTML(message){
     var chatImage = "";
@@ -48,4 +49,6 @@ $(function(){
         alert('error');
       });
     });
+});
+return false
 });
