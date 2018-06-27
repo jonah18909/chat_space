@@ -46,7 +46,6 @@ $(document).on('click', '#delete-user-button', function(){
   $(this).parent().remove();
 });
 
-
  function displayUsers() {
       var input = $("#user-search-field").val();
 
@@ -56,7 +55,6 @@ $(document).on('click', '#delete-user-button', function(){
         data: { keyword: input },
         dataType: 'json'
       })
-
       .done(function(users) {
          $('#user-search-field').children().remove();
         if (users.length !== 0 ) {
@@ -68,27 +66,6 @@ $(document).on('click', '#delete-user-button', function(){
           appendNoUser("該当するユーザーはいません");
         }
     })
-        // $(document).on("click", ".user-search-add", function(){
-        //   $('#chat-group-users').empty();
-        //   $("#user-search-field").val('');
-        //   var userId = $(".user-search-add").data('userId');
-        //   var userName = $(".user-search-add").data('userName');
-
-        //   // var userIds = []
-        //   //   userIds.push(userId)
-        //   // var str = [];
-        //   // var ary = $('[data-user-name]');
-        //   // for(var n=0, len=ary.length;n<len;n++){
-        //   //   str.push(ary[n].getAttribute('data-user-name'));
-        //   // }
-        //   console.log(userId);
-        //   console.log(userName);
-        //     appendAddUser(userName);
-        // })
-      //   $(document).on("click", "#delete-user-button", function(){
-      //     $(this).remove();
-      //   })
-      // })
       .fail(function() {
        alert('ユーザーの検索に失敗しました');
       });
