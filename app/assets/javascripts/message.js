@@ -1,9 +1,6 @@
-$(document).on('turbolinks:load', function(){
 $(function(){
   function buildHTML(message){
-    var chatImage = "";
-    if (message.image){
-      chatImage = `<img class='chat-main__message-image', src='${message.image}'> `;}
+   var chatImage = null ?  '' : `<img class='chat-main__message-image', src='${message.image}'> ` ;
     var html = `
                   <div class="chat-main__message clearfix" data-id=${message.id}>
                     <div class="chat-main__message-name">
@@ -40,16 +37,17 @@ $(function(){
 
       .done(function(data){
         var html = buildHTML(data);
-        $('.chat-main__body--messages-list:last').append(html);
+        $('.chat-main__body--messages-list').append(html);
         $('#message_text').val('');
         $('#message_image').val('');
-        $('.chat-main__body').animate({scrollTop: $('.chat-main__message:last').offset().top }, 1500);
-                console.log('成功')
+        $('.chat-main__body--messages-list').animate({scrollTop: $('this').offset().top }, 'fast');
       })
       .fail(function(){
         alert('error');
       });
     });
 });
-return false
-});
+
+
+
+
