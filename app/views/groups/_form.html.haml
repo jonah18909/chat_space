@@ -1,10 +1,10 @@
 = form_for group do |f|
   - if group.errors.any?
     .chat-group-form__errors
-    %h2= "#{group.errors.full_messages.count}件のエラーが発生しました。"
-    %ul
-      - group.errors.full_messages.each do |message|
-        %li= message
+      %h2= "#{group.errors.full_messages.count}件のエラーが発生しました。"
+      %ul
+        - group.errors.full_messages.each do |message|
+          %li= message
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       = f.label :name, class: 'chat-group-form__label'
@@ -23,8 +23,13 @@
 
     .chat-group-form__field--right
       #chat-group-users
-        = f.hidden_field :user_ids, multiple: true
-        = render partial: "groups/user_list", collection: @group_users
+        - group.users.each.with_index do |user, i|
+          .chat-group-user.clearfix{id: "chat-group-user-#{i}"}
+          = f.hidden_field :user_ids, multiple: true, value: "#{user.id}"
+          #chat-group-user.chat-group-user.remove-from-list.clearfix
+            %p.chat-group-user__name
+              = user.name
+            %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn#delete-user-button 削除
 
   .chat-group-form__field.clearfix
     .chat-group-form__field--left

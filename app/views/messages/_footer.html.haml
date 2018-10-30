@@ -1,5 +1,5 @@
 .chat-main__footer-form
-  = form_for [@group, @message], class: 'new_message' do |f|
+  = form_for [@group, @message] do |f|
     .chat-main__footer-body
       = f.text_field :text, class: 'message', placeholder: 'type a message'
       = f.label :image, class: 'chat-file' do

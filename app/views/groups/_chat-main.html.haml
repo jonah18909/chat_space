@@ -7,9 +7,8 @@
         = link_to 'edit', "/groups/#{@group.id}/edit", method: :get
   .chat-main__header-members
     MEMBER:
-    %i
-      - @group.users.each do |user|
-        = user.name
+    - @group.users.each do |user|
+      = user.name
 
 
 
